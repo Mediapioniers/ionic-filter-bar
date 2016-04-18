@@ -58,7 +58,6 @@
       '$ionicModal',
       '$ionicScrollDelegate',
       function ($document, $rootScope, $compile, $timeout, $filter, $ionicPlatform, $ionicFilterBarConfig, $ionicConfig, $ionicModal, $ionicScrollDelegate) {
-        var isShown = false;
         var $body = $document[0].body;
         var templateConfig = {
           theme: $ionicFilterBarConfig.theme(),
@@ -88,12 +87,6 @@
          * @returns {function} `hideFilterBar` A function which, when called, hides & cancels the filter bar.
          */
         function filterBar (opts) {
-          //if filterBar is already shown return
-          if (isShown) {
-            return;
-          }
-
-          isShown = true;
           opts = opts || {};
 
           var scope = $rootScope.$new(true);
@@ -275,7 +268,6 @@
                 scope.$destroy();
                 element.remove();
                 scope.cancelFilterBar.$scope = scope.modal = $scrollContainer = scrollView = filterWrapperEl = backdropEl = input = null;
-                isShown = false;
                 (done || angular.noop)();
               }, 350);
             });
