@@ -118,7 +118,8 @@
             favoritesTitle: 'Favorite Searches',
             favoritesAddPlaceholder: 'Add a search term',
             favoritesEnabled: false,
-            favoritesKey: 'ionic_filter_bar_favorites'
+            favoritesKey: 'ionic_filter_bar_favorites',
+            autoFocus: true
           }, opts);
 
           scope.data = {filterText: ''};
@@ -303,7 +304,9 @@
 
               $timeout(function () {
                 filterWrapperEl.addClass('filter-bar-in');
-                scope.focusInput();
+                if (scope.autoFocus) {
+                    scope.focusInput();
+                }
                 scope.showBackdrop();
                 (done || angular.noop)();
               }, 20, false);
