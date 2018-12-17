@@ -106,7 +106,7 @@
                         // When a non escape key is pressed, show/hide backdrop/clear button based on filterText length
                         var keyUp = function(e) {
                             if (e.which === 27) {
-                                $scope.config.cancelOnEscape && cancelFilterBar();
+                                $scope.cancelOnEscape && cancelFilterBar();
                             } else if ($scope.data.filterText && $scope.data.filterText.length) {
                                 $scope.hideBackdrop();
                             } else {
